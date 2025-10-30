@@ -1,0 +1,18 @@
+import express from 'express';
+import cors from 'cors';
+import session from 'express-session';
+import githubRouter from './github.js';
+import pluginRouter from './plugin.js';
+import { router as configRouter } from './routes/config.js';
+import { CONFIG } from './config.js';
+import cron from 'node-cron';
+const app = express();
+app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
+app.use(express.json({ limit: '10mb' }));
+app.use(session({ secret: process.env.SESSION_SECRET || 'dev', resave:false, saveUninitialized:true }));
+app.use('/api/github', githubRouter);
+app.use('/api/plugin', pluginRouter);
+app.use('/api/config', configRouter);
+app.get('/', (req,res)=>res.send('DiagramFlow-Tele backend'));
+cron.schedule('0 * * * *', ()=>{ console.log('Cron: check plugin updates placeholder') });
+app.listen(CONFIG.PORT, ()=> console.log(`Backend listening on ${CONFIG.PORT}`));
