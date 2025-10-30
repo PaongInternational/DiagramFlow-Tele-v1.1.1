@@ -1,0 +1,14 @@
+:root{--bg:#0b1020;--card:#0f1724;--accent:#7c3aed;--muted:#94a3b8}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,Arial;background:linear-gradient(180deg,#071029 0%, #0b1020 100%);color:#e6eef8}
+.app{display:flex;height:100vh}
+.sidebar{width:300px;padding:20px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-right:1px solid rgba(255,255,255,0.03)}
+.logo{display:flex;align-items:center;gap:12px}
+.logo img{width:56px;height:56px;border-radius:12px}
+.nav button{display:block;width:100%;text-align:left;padding:12px;border-radius:10px;border:none;background:transparent;color:var(--muted);margin-top:10px;cursor:pointer}
+.content{flex:1;padding:20px;overflow:auto}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,0.03)}
+.button{background:linear-gradient(90deg,var(--accent),#4c1d95);color:white;padding:8px 14px;border-radius:10px;border:none;cursor:pointer}
+.input{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#e6eef8}
+.footer{font-size:12px;color:var(--muted);margin-top:20px}
+@media (max-width: 800px){.app{flex-direction:column}.sidebar{width:100%;display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding:12px}.nav{display:none}.content{padding:12px}}
